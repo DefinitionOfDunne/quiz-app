@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="style/reset.css">
-	<link rel="stylesheet" href="style/style.css"/>
-</head>
-
-<body>
-<!-- Welcome Screen -->
-	<!--Welcome Title -->
+<!--Welcome Title -->
 <section id="welcome-overlay">
 	<div class="intro-container">
 	<header id="top-header">
@@ -54,16 +43,13 @@
 
 	<div class="question-wrapper">
 		<h2 class="question-text"> Lorem ipsum dolor sit amet? </h2>
-		<ul class=<"answers">
-			<li>Answer 1</li>
-			<li>Answer 2</li>
-			<li>Answer 3</li>
-			<li>Answer 4</li>
+		<ul class="answer-list">
+			
 		</ul>
 		</div>
 
 	<div id="quiz-tracker">
-	<h2>Progress</h2>	
+	<h2>Point <br> Tracker</h2>	
 		<ul>
 			<li>Question 1</li>
 			<li>Question 2</li>
@@ -72,6 +58,7 @@
 			<li>Question 5</li>
 		</ul>
 	</div>
+	<button id="submit-button">Submit Answer</button>
 	</div>
 	
 </section>
@@ -83,7 +70,9 @@
 	<div class="intro-container">
 	<header>
 		<h1>Results</h1>
-		<h2>You got <span id="results-input"> X / Y </span> correct!</h2>
+		<h2>You got</h2> 
+		<p id="results-input"> </p>
+		<h2>correct!</h2>
 	</header>
 	<div id="feedback">
 		<p class="feedback-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quo maiores perferendis ratione nihil, dolores delectus, aperiam laborum? Explicabo nam adipisci voluptates provident suscipit aliquid? </p>
