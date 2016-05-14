@@ -24,7 +24,7 @@ body {
 	background-color: #ddff99;
 	position: relative;
 	width: 70em;
-	height: 33em;
+	height: 40em;
 	margin: auto;
 	top: 5%;
 	z-index: 1;
@@ -75,7 +75,20 @@ header h1 {
     font-weight: bold;
     font-family: 'Finger Paint';
 }
-
+#submit-button {
+	position: relative;
+    left: 18em;
+    top: 20em;
+    width: 20em;
+    height: 5em;
+    font-size: 1em;
+    border-radius: 3em;
+    border-style: solid;
+    border-color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Finger Paint';
+}
 #ghostride-zone-bottom {
 	position: relative;
 	top:11em;
@@ -83,14 +96,16 @@ header h1 {
 
 #car-image {
 	position: relative;
-	left: 350px;
+	left: 750px;
 	width: 150px;
+	display: none;
 }
 
 #bunny-image {
 	position: relative;
 	width: 100px;
-	left: 375px;
+	left: 775px;
+	display: none;
 }
 
 #quiz {
@@ -101,7 +116,7 @@ header h1 {
     position: absolute;
     top: 10em;
     width: 40%;
-    height: 60%;
+    height: auto;
     float: left;
     left: 5em;
     padding: 1em 0 1em 0;
@@ -184,5 +199,4 @@ header h1 {
     font-weight: bold;
     font-family: 'Finger Paint';
 }
-
 
