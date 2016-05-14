@@ -49,7 +49,7 @@ var allQuestions = [{
 quizStart();
 
 function quizStart() {
-  $("#start-button").click(question);          
+  $("#start-button").click(generateQuestion);          
   $('.answer-list').on('click', 'li', function () {
     validateAnswer.apply(this); 
   	});
