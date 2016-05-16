@@ -135,8 +135,15 @@ header h1 {
 	width: 50%;
     margin: auto;
 }
-
-.question-wrapper li {
+.wrong-answer {
+	margin: .75em 0 0 0;
+    width: 100%;
+    background-color: red;
+    font-size: 1.5em;
+    border-radius: .5em;
+    padding: .5em;
+}
+.list-answer-item {
     margin: .75em 0 0 0;
     width: 100%;
     background-color: blue;
@@ -144,6 +151,14 @@ header h1 {
     border-radius: .5em;
     padding: .5em;
 
+}
+.selectedAnswer {
+    margin: .75em 0 0 0;
+    width: 100%;
+    background-color: orange;
+    font-size: 1.5em;
+    border-radius: .5em;
+    padding: .5em;
 }
 
 #quiz-tracker {
@@ -199,4 +214,5 @@ header h1 {
     font-weight: bold;
     font-family: 'Finger Paint';
 }
+
 
