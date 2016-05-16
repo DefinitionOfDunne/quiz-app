@@ -68,7 +68,7 @@ function generateQuestion() {
      	$('.question-text').text(allQuestions[currentQuestion].question);
      	}
      		else {
-			endGame();
+			showResults();
 		}
      		for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
         	$('.answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[i] + '</li>');
@@ -109,11 +109,11 @@ function clearQuizItem (){
 
 
 
-function endGame() {
-$("#results").show();
-$("#quiz").hide();
-$("#results-input").append(score);
-$('#new-game').click(newGame);
+function showResults() {
+	$("#results").show();
+	$("#quiz").hide();
+	$("#results-input").append(score);
+	$('#new-game').click(newGame);
 }
 
 
