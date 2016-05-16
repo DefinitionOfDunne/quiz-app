@@ -30,26 +30,26 @@ var allQuestions = [{
 
 }];
 
-	/*-----Start Screen & Animations------*/
-	$("#start-button").click(function  () {
-		$('#car-image').show();
-		$('#car-image').animate(
-  		{'left': '-800px'}, 10000,
-  		function() {
-    		$(this).hide();
-  		}
-      	);
-		$('#bunny-image').show();
-		$('#bunny-image').animate(
-  		{'left': '-800px'}, 10000,
-  		function() {
-    	$(this).hide(); 
-    	$('#welcome-overlay').fadeOut(1000);
+/*-----Start Screen & Animations------*/
+$("#start-button").click(function  () {
+	$('#car-image').show();
+	$('#car-image').animate(
+  	{'left': '-800px'}, 10000,
+  	function() {
+  		$(this).hide();
+  	}
+      );
+	$('#bunny-image').show();
+	$('#bunny-image').animate(
+  	{'left': '-800px'}, 10000,
+  	function() {
+    		$(this).hide(); 
+    		$('#welcome-overlay').fadeOut(1000);
+  	})
     	gamePlay();
     	generateQuestion();
     	checkAnswer();
-    	});
-  		});
+});
  	
 
 
