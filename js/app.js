@@ -1,4 +1,5 @@
-'use strict';
+$(document).ready(function (){
+"use strict";
 
 var score = 0;
 var currentQuestion = 0;
@@ -26,10 +27,11 @@ var allQuestions = [{
 	question: "Which of the following is a common nickname for rapper E-40?",
 	answers: ["40-Watah", "Charlie Hustle", "E Fonzarelli", "All The Above"],
 	correct: "All The Above"
+
 }];
 
 	/*-----Start Screen & Animations------*/
-	$("#start-button").click(function() {
+	$("#start-button").click(function  () {
 		$('#car-image').show();
 		$('#car-image').animate(
   		{'left': '-800px'}, 10000,
@@ -41,53 +43,71 @@ var allQuestions = [{
 		$('#bunny-image').animate(
   		{'left': '-800px'}, 10000,
   		function() {
-    	$(this).hide();
+    	$(this).hide(); 
     	$('#welcome-overlay').fadeOut(1000);
+    	gamePlay();
+    	generateQuestion();
+    	checkAnswer();
+    	});
   		});
-  		});
+ 	
 
-quizStart();
 
-function quizStart() {
-  $("#start-button").click(generateQuestion);          
-  $('.answer-list').on('click', 'li', function () {
-    validateAnswer.apply(this); 
-  	});
+function gamePlay(){
+	$('.answer-list').on('click', 'li', userSelection)
+	$('#submit-button').click(function(){
+	checkAnswer();
+})
+}	
+         
+
+
+function generateQuestion() {
+ 	clearQuizItem();
+ 		if (currentQuestion < allQuestions.length) {
+     	$('.question-text').text(allQuestions[currentQuestion].question);
+     	}
+     		else {
+			endGame();
+		}
+     		for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
+        	$('.answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[i] + '</li>');
+		}
+		
 	}
 
+
+function userSelection() {
+	$(this).removeClass("list-answer-item").addClass("selectedAnswer");
+	}
+
+function checkAnswer() {
+    	if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
+    	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
+    } 	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
+        nextQuestion();
+    }
+}
+
+
+
+function nextQuestion () {
+	clearQuizItem();
+	currentQuestion++;
+	generateQuestion();
+}
+
+	
 
 function clearQuizItem (){
 	$(".question-text").empty();
 	$(".answer-list").empty();
 	}
 
-function generateQuestion() {          
-
-  if (currentQuestion < allQuestions.length) {     
-    $('.question-text').text(allQuestions[currentQuestion].question);            
-    var i = 0;                                                                
-    while(i < allQuestions[currentQuestion].answers.length)                  
-    {
-    $('.answer-list').append("<li>" + allQuestions[currentQuestion].answers[i] + "</li>");
-    i ++;
-    }
-  	} else {
-    endGame();
- 	}
-	}
 
 
-function validateAnswer() {
- 	if (currentQuestion > allQuestions.length) { 
-    return 0;                                     
-  	}
-  	else if ($(this).html() === allQuestions[currentQuestion].correct) {
-    score++;    
-  	}
-		currentQuestion++; 
-		clearQuizItem();           
-		generateQuestion();        
-	}
+
+
 
 function endGame() {
 $("#results").show();
@@ -107,3 +127,5 @@ function newGame(){
     clearQuizItem();
     generateQuestion();                                             
 }
+
+});
