@@ -30,6 +30,7 @@ var allQuestions = [{
 
 }];
 
+
 /*-----Start Screen & Animations------*/
 $("#start-button").click(function  () {
 	$('#car-image').show();
@@ -51,16 +52,14 @@ $("#start-button").click(function  () {
     	checkAnswer();
 });
  	
-
-
+ 	
+ 	
 function gamePlay(){
 	$('.answer-list').on('click', 'li', userSelection)
 	$('#submit-button').click(function(){
 	checkAnswer();
-})
-}	
-         
-
+	})
+	}	
 
 function generateQuestion() {
  	clearQuizItem();
@@ -76,7 +75,6 @@ function generateQuestion() {
 		
 	}
 
-
 function userSelection() {
 	$(this).removeClass("list-answer-item").addClass("selectedAnswer");
 	}
@@ -89,25 +87,16 @@ function checkAnswer() {
     }
 }
 
-
-
 function nextQuestion () {
 	clearQuizItem();
 	currentQuestion++;
 	generateQuestion();
 }
 
-	
-
 function clearQuizItem (){
 	$(".question-text").empty();
 	$(".answer-list").empty();
 	}
-
-
-
-
-
 
 function showResults() {
 	$("#results").show();
@@ -115,7 +104,6 @@ function showResults() {
 	$("#results-input").append(score);
 	$('#new-game').click(newGame);
 }
-
 
 function newGame(){
 	$("#welcome-overlay").show();
@@ -127,5 +115,4 @@ function newGame(){
     clearQuizItem();
     generateQuestion();                                             
 }
-
 });
