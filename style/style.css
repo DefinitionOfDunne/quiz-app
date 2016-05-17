@@ -135,6 +135,13 @@ header h1 {
 	width: 50%;
     margin: auto;
 }
+
+#current-question-title{
+
+}
+#question-total {
+    
+}
 .wrong-answer {
 	margin: .75em 0 0 0;
     width: 100%;
