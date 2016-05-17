@@ -34,7 +34,7 @@ var allQuestions = [{
 
 /*-----Start Screen & Animations------*/
 $("#start-button").click(function  () {
-	/*$('#car-image').show();
+	$('#car-image').show();
 	$('#car-image').animate(
   	{'left': '-800px'}, 10000,
   	function() {
@@ -45,13 +45,14 @@ $("#start-button").click(function  () {
 	$('#bunny-image').animate(
   	{'left': '-800px'}, 10000,
   	function() {
-    		$(this).hide(); */
+    		$(this).hide(); 
     		$('#welcome-overlay').fadeOut(100);
   	
     	gamePlay();
     	generateQuestion();
     	checkAnswer();
     	questionCounter();
+})
 });
  	
  	
