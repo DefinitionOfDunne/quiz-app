@@ -38,48 +38,48 @@ $("#start-button").click(function  () {
   	{'left': '-800px'}, 10000,
   	function() {
   		$(this).hide();
+  		$(this).css('left', '750px');
   	}
     );
 	$('#bunny-image').show();
 	$('#bunny-image').animate(
   	{'left': '-800px'}, 10000,
   	function() {
-    		$(this).hide(); 
+    		$(this).hide();
+    		$(this).css('left', '775px'); 
     		$('#welcome-overlay').fadeOut(100);
-  	
     	gamePlay();
     })
 
 });
  	
- 	
- 	
 function gamePlay(){
-	generateQuestion();
+		generateQuestion();
 	$('.answer-list').on('click', 'li', userSelection)
 	$('#submit-button').click(function(){
-	checkAnswer();
+		checkAnswer();
 	})
 	$('#continue-button').click(function(){
-   	addScore();
-	nextQuestion();
+   		addScore();
+		nextQuestion();
 	})
-	}
+}
+
 
 function userSelection() {
 	$(this).removeClass("list-answer-item").addClass("selectedAnswer");
-	}
+}
 
 function generateQuestion() {
-		questionCounter();
-		clearQuizItem();
+	questionCounter();
+	clearQuizItem();
  		if (currentQuestion < allQuestions.length) {
-     	$('.question-text').text(allQuestions[currentQuestion].question);
+     		$('.question-text').text(allQuestions[currentQuestion].question);
      	}
-     		else {
+     	else {
 			showResults();
 		}
-     		for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
+     	for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
         	$('.answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[i] + '</li>');
 		}
 		
@@ -89,19 +89,19 @@ function generateQuestion() {
 function questionCounter(){
 	if (currentQuestion < allQuestions.length) {
 		$("#current-question-title").text(currentQuestion + 1);
-}
-}
+		}
+	}
 
 function checkAnswer() {
-    	if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
+    if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
-    } 	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
+		}
+	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("right-answer").removeClass("selectedAnswer");
     	$('#continue-button').show();
-    	
-    }
+    	}
+	}
 
-}
 function addScore(){
 	var score = 0;
 	var wrongAttempts = $('.wrong-answer').length;
@@ -129,14 +129,24 @@ function clearQuizItem (){
 function showResults() {
 	$("#results").show();
 	$("#quiz").hide();
-	$(function() {
-    	var sum = 0;
-    	$('li.score-total').each(function(){
-        	sum += parseInt(this.innerHTML, 10)
-    	})
-    		$('#results-input').text(sum);
-		})
-			$('#new-game').click(newGame);
+	computeFinalScore ();
+	$('#new-game').click(newGame);
+	}
+
+
+function computeFinalScore() {	
+    var sum = 0;
+    $('li.score-total').each(function(){
+    sum += parseInt(this.innerHTML, 10)
+    })
+    $('#results-input').text(sum);
+    	if (sum >= 11) {
+    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
+    	}
+    	else {
+    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');
+    	}	
+  
 	}
 
 function newGame(){
@@ -144,6 +154,7 @@ function newGame(){
 	$("#quiz").show();
 	$("#results").hide();
 	$("#results-input").empty();
+	$(".placement").empty();
 	$('#point-total').empty();                                           
     score = 0;
     currentQuestion = 0;
