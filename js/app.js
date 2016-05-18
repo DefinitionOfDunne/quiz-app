@@ -1,8 +1,7 @@
+
 $(document).ready(function (){
 "use strict";
-
 var score = 0;
-var tries = 0;
 var currentQuestion = 0;
 var allQuestions = [{
 	question: "If you ever plan to run with his team, which of the follow artists finds it important to practice good hygeine?" ,
@@ -49,18 +48,21 @@ $("#start-button").click(function  () {
     		$('#welcome-overlay').fadeOut(100);
   	
     	gamePlay();
-    	generateQuestion();
-    	checkAnswer();
-    	questionCounter();
-})
+    })
+
 });
  	
  	
  	
 function gamePlay(){
+	generateQuestion();
 	$('.answer-list').on('click', 'li', userSelection)
 	$('#submit-button').click(function(){
 	checkAnswer();
+	})
+	$('#continue-button').click(function(){
+   	addScore();
+	nextQuestion();
 	})
 	}
 
@@ -93,58 +95,58 @@ function questionCounter(){
 function checkAnswer() {
     	if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
-    	tries++;
     } 	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
-    	addScore();
-        nextQuestion();
+    	$('.selectedAnswer').addClass("right-answer").removeClass("selectedAnswer");
+    	$('#continue-button').show();
+    	
     }
 
 }
-function addScore() {
-		if (tries == 1) {
-		score = (score + 4);
-		}
-		else if (tries == 2) {
-		score = (score + 3);
-		}
-		else if (tries == 3) {
-		score = (score + 2);
-		}
-		else if (tries == 4) {
-		score = (score + 1);
-		}
-	$("#point-total").append('<li>' + score + '</li>');	
-}	
+function addScore(){
+	var score = 0;
+	var wrongAttempts = $('.wrong-answer').length;
+            wrongAttempts == 3 ? score = 1 : false;
+            wrongAttempts == 2 ? score = 2 : false;
+            wrongAttempts == 1 ? score = 3 : false;
+            wrongAttempts == 0 ? score = 4 : false;
+	$("#point-total").append('<li class="score-total">' + score + '</li>');	
+}
 
 function nextQuestion () {
 	clearQuizItem();
 	currentQuestion++;
 	generateQuestion();
-	var tries = 0;
 }
 
 function clearQuizItem (){
+	$("#continue-button").hide();
 	$("#current-question-title").empty;
 	$(".question-text").empty();
-	$(".answer-list").empty();
+	$(".list-answer-item, .wrong-answer, .right-answer").remove();
 	}
+
 
 function showResults() {
 	$("#results").show();
 	$("#quiz").hide();
-	$("#results-input").append(score);
-	$('#new-game').click(newGame);
-}
+	$(function() {
+    	var sum = 0;
+    	$('li.score-total').each(function(){
+        	sum += parseInt(this.innerHTML, 10)
+    	})
+    		$('#results-input').text(sum);
+		})
+			$('#new-game').click(newGame);
+	}
 
 function newGame(){
 	$("#welcome-overlay").show();
 	$("#quiz").show();
 	$("#results").hide();
 	$("#results-input").empty();
-	$('#point-total').empty();                                             
+	$('#point-total').empty();                                           
     score = 0;
     currentQuestion = 0;
-    clearQuizItem();
-    generateQuestion();                                             
+    clearQuizItem();                                           
 }
 });
