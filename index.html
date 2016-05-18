@@ -1,101 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Bay Area Rap Quiz</title>
-	<link rel="stylesheet" href="style/reset.css">
-	<link rel="stylesheet" href="style/style.css"/>
-</head>
 
-<body>
-<!-- Welcome Screen -->
-	<!--Welcome Title -->
-<section id="welcome-overlay">
-	<div class="intro-container">
-	<header id="top-header">
-		<h1>The Ultimate Bay Area Hip Hop Challenge</h1>
-		<h2> Time to find out if you're bootsie or ballin'! </h2>
-	</header>
+$(document).ready(function (){
+"use strict";
+var score = 0;
+var currentQuestion = 0;
+var allQuestions = [{
+	question: "If you ever plan to run with his team, which of the follow artists finds it important to practice good hygeine?" ,
+	answers: ["Rappin 4 Tay", "MC Hammer", "Spice 1", "Del The Funky Homosapien"],
+	correct: "Del The Funky Homosapien"
+	},
+	{
+	question: "In 2008, this artist released a collaborative album with the then-late Mac Dre, featuring songs like Fillmore - Vallejo, Bay Thang, and I'm A Sav,?",
+	answers: ["Andre Nickatina", "Smoov E", "The Jacka", "Mistah F.A.B."],
+	correct: "Andre Nickatina"
+	},
+	{
+	question: "Which artist is widely credited as being the creator of the Hyphy movement?",
+	answers: ["Too $hort", "Keak Da Sneak", "Lil Jon", "E-40"],
+	correct: "Keak Da Sneak"
+	},
+	{
+	question: "Who is The BasedGod?",
+	answers: ["Lil B", "B-Legit", "The Big Badass Ant Banks", "Jay Biz"],
+	correct: "Lil B"
+	},
+	{
+	question: "Which of the following is a common nickname for rapper E-40?",
+	answers: ["40-Watah", "Charlie Hustle", "E Fonzarelli", "All The Above"],
+	correct: "All The Above"
 
-	<!--Instructions -->
-	<div id="instructions">
-	<h4>Instructions</h4>
-	<ul id="instruction-list">
-		<li>1. Click Start To Being The Quiz!</li>
-		<li>2. Answer Each Multiple Choice Question</li>
-		<li>3. Four Points If You Get It On The First Try!</li>
-		<li>4. Three Points If You Get It On The Second Try!</li>
-		<li>5. Two Points If You Get It On The Third Try!</li>
-		<li>6. One Point If You Get It On The Fourth Try!</li>	
-		</ul>
-		</div>
-
-	<button id="start-button">Get Crack-a-lackin'</button>
+}];
 
 
-	
-	<!--Ghostriding Image -->
-	<div id="ghostride-zone-bottom">
-		<img id="car-image" src="images/whip.png">
-		<img id="bunny-image" src="images/walking.gif">
-	</div>
-	</div>
+/*-----Start Screen & Animations------*/
+$("#start-button").click(function  () {
+	$('#car-image').show();
+	$('#car-image').animate(
+  	{'left': '-800px'}, 10000,
+  	function() {
+  		$(this).hide();
+  		$(this).css('left', '750px');
+  	}
+    );
+	$('#bunny-image').show();
+	$('#bunny-image').animate(
+  	{'left': '-800px'}, 10000,
+  	function() {
+    		$(this).hide();
+    		$(this).css('left', '775px'); 
+    		$('#welcome-overlay').fadeOut(100);
+    	gamePlay();
+    })
 
-</section>
-
-
-<!--Quiz Questions --> 
-<section id="quiz">
-	<div class="intro-container">
-		<header>
-			<h1>The Ultimate Bay Area Hip Hop Challenge</h1>
-			<h4>Question 
-			<span id="current-question-title"> </span>
-			 of 
-			 <span id="question-total"> 5 </h4>
-		</header>
-
-	<div class="question-wrapper">
-		<h2 class="question-text"> Lorem ipsum dolor sit amet? </h2>
-		<ul class="answer-list">
-			
-		</ul>
-		</div>
-
-	<div id="quiz-tracker">
-	<h2>Point <br> Tracker</h2>	
-		<ul id="point-total">
-			
-		</ul>
-	</div>
-	<button id="submit-button">Submit Answer</button>
-	<button id="continue-button"> Next! </button>
-	</div>
-	
-</section>
+});
+ 	
+function gamePlay(){
+		generateQuestion();
+	$('.answer-list').on('click', 'li', userSelection)
+	$('#submit-button').click(function(){
+		checkAnswer();
+	})
+	$('#continue-button').click(function(){
+   		addScore();
+		nextQuestion();
+	})
+}
 
 
+function userSelection() {
+	$(this).removeClass("list-answer-item").addClass("selectedAnswer");
+}
 
-<!--Results -->
-<section id="results">
-	<div class="intro-container">
-	<header>
-		<h1>Results</h1>
-		<h2>You got</h2> 
-		<p id="results-input"> </p>
-		<h2>points!</h2>
-	</header>
-	<!--
-	div id="feedback">
-		<p class="feedback-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quo maiores perferendis ratione nihil, dolores delectus, aperiam laborum? Explicabo nam adipisci voluptates provident suscipit aliquid? </p>
-	</div> 
-	-->
-	<button id="new-game">Click to Try Again!</button>
-	</div>
-	</section>
-<!-- JavaScript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-</body>
+function generateQuestion() {
+	questionCounter();
+	clearQuizItem();
+ 		if (currentQuestion < allQuestions.length) {
+     		$('.question-text').text(allQuestions[currentQuestion].question);
+     	}
+     	else {
+			showResults();
+		}
+     	for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
+        	$('.answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[i] + '</li>');
+		}
+		
+	}
 
-</html>
+
+function questionCounter(){
+	if (currentQuestion < allQuestions.length) {
+		$("#current-question-title").text(currentQuestion + 1);
+		}
+	}
+
+function checkAnswer() {
+    if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
+    	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
+		}
+	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
+    	$('.selectedAnswer').addClass("right-answer").removeClass("selectedAnswer");
+    	$('#continue-button').show();
+    	}
+	}
+
+function addScore(){
+	var score = 0;
+	var wrongAttempts = $('.wrong-answer').length;
+            wrongAttempts == 3 ? score = 1 : false;
+            wrongAttempts == 2 ? score = 2 : false;
+            wrongAttempts == 1 ? score = 3 : false;
+            wrongAttempts == 0 ? score = 4 : false;
+	$("#point-total").append('<li class="score-total">' + score + '</li>');	
+}
+
+function nextQuestion () {
+	clearQuizItem();
+	currentQuestion++;
+	generateQuestion();
+}
+
+function clearQuizItem (){
+	$("#continue-button").hide();
+	$("#current-question-title").empty;
+	$(".question-text").empty();
+	$(".list-answer-item, .wrong-answer, .right-answer").remove();
+	}
+
+
+function showResults() {
+	$("#results").show();
+	$("#quiz").hide();
+	computeFinalScore ();
+	$('#new-game').click(newGame);
+	}
+
+
+function computeFinalScore() {	
+    var sum = 0;
+    $('li.score-total').each(function(){
+    sum += parseInt(this.innerHTML, 10)
+    })
+    $('#results-input').text(sum);
+    	if (sum >= 11) {
+    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
+    	}
+    	else {
+    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');
+    	}	
+  
+	}
+
+function newGame(){
+	$("#welcome-overlay").show();
+	$("#quiz").show();
+	$("#results").hide();
+	$("#results-input").empty();
+	$('#point-total').empty();                                           
+    score = 0;
+    currentQuestion = 0;
+    clearQuizItem();                                           
+}
+});
