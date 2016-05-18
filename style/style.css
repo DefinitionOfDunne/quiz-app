@@ -18,7 +18,7 @@ button {
 }
 #welcome-overlay {
 	width: 100%;
-	height: 500px;
+	height: 40em;
 	position: fixed;
 	z-index: 50;
 	background-color: white;
@@ -28,7 +28,7 @@ button {
 	background-color: #D5D5D5;
 	position: relative;
 	width: 70em;
-	height: 40em;
+	height: 33em;
 	margin: auto;
 	top: 5%;
 	z-index: 1;
@@ -62,14 +62,14 @@ header h4 {
 
 #instructions h4 {
 	font-family: "Finger Paint";
-	font-size: 2em;
+	font-size: 1.5em;
 	padding: .5em 0 .5em 0;
     color: maroon;
 }
 #instructions ul {
  	text-align: left;
     font-weight: bolder;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 #instructions ul li {
@@ -93,7 +93,7 @@ header h4 {
 #submit-button {
 	position: relative;
     left: 18em;
-    top: 25em;
+    top: 16em;
     width: 17em;
     height: 4em;
     font-size: 1em;
@@ -106,7 +106,7 @@ header h4 {
 }
 #continue-button{
     position: absolute;
-    top: 28.5em;
+    top: 25em;
     left: 44.5em;
     width: 17em;
     height: 4em;
@@ -121,7 +121,7 @@ header h4 {
 }
 #ghostride-zone-bottom {
 	position: relative;
-	top:19em;
+	top: 11.75em;
 }
 
 #car-image {
@@ -146,7 +146,7 @@ header h4 {
     position: absolute;
     top: 11em;
     width: 40%;
-    height: 23em;
+    height: 16em;
     float: left;
     left: 5em;
     padding: 1em 0 1em 0;
@@ -158,7 +158,7 @@ header h4 {
 .question-text {
     width: 93%;
 	font-family: "Raleway";
-	font-size: 1.5em;
+	font-size: 1em;
     margin: auto;
 	margin-bottom: 2em;
     font-weight: bolder;
@@ -171,19 +171,19 @@ header h4 {
 
 #current-question-title{
     font-family: 'Finger Paint';
-    font-size: 2em;
+    font-size: 1.5em;
     color: maroon;
 }
 #question-total {
     font-family: 'Finger Paint';
-    font-size: 2em;
+    font-size: 1.5em;
     color: maroon;
 }
 .wrong-answer {
 	margin: .75em 0 0 -.75em;
     width: 100%;
     background-color: #ff4d4d;
-    font-size: 1em;
+    font-size: .75em;
     border-radius: .5em;
     padding: 1em;
     font-weight: bolder;
@@ -192,7 +192,7 @@ header h4 {
     margin: .75em 0 0 -.75em;
     width: 100%;
     background-color: #009900;
-    font-size: 1em;
+    font-size: .75em;
     border-radius: .5em;
     padding: 1em;
     font-weight: bolder;
@@ -201,7 +201,7 @@ header h4 {
     margin: 1em 0 0 -.75em;
     width: 100%;
     background-color: #D5D5D5;
-    font-size: 1em;
+    font-size: .75em;
     border-radius: 1em;
     padding: 1em;
     font-weight: bolder;
@@ -211,7 +211,7 @@ header h4 {
     margin: .75em 0 0 -.75em;
     width: 100%;
     background-color: #ffff99;
-    font-size: 1em;
+    font-size: .75em;
     border-radius: 1em;
     padding: 1em;
     font-weight: bolder;
@@ -231,7 +231,7 @@ header h4 {
 }
 #quiz-tracker h2 {
 	font-family: "Finger Paint";
-	font-size: 1.5em;
+	font-size: 1.25em;
 	margin-bottom: 1em;
 }
 #quiz-tracker li {
@@ -257,14 +257,34 @@ header h4 {
 	margin: auto;
 	width: 40%;
 }
-
-#feedback p {
-	margin-top: 3em;
+.placement {
+    text-align: center;
+    padding-top: .6em;
+    font-size: 1.5em;
+    position: absolute;
+    left: .8em;
+}
+.bootsie-or-ballin{
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    left: 1em;
+    text-align: center;
+    background-color: white;
+    top: 5em;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    font-size: 1.75em;
+    font-weight: bolder;
+    text-shadow: 2px 2px 5px maroon;
+    border-style: solid;
+    border-width: .3em;
+    border-radius: 10em;
+    padding: 2.5em;
 }
 
-
 #new-game {
-	margin-top: 10em;
+	margin-top: 2em;
 	width: 20em;
     height: 5em;
     font-size: 1em;
