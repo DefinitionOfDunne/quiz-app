@@ -134,20 +134,18 @@ function showResults() {
 
 
 function computeFinalScore() {	
-var score = [];
-i = 0;
 var sum = 0;
-for (i=0; i<score.length; i++)
-{
-    sum += score[i];
+$('li.score-total').each(function(){
+sum += parseInt(this.innerHTML, 10)
+})
+$('#results-input').text(sum);
+if (sum >= 11) {
+$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
 }
-    	if (sum >= 11) {
-    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
-    	}
-    	else {
-    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');
-    		}
-	}
+else {
+	$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');	
+  	}		  	
+  }
 function gameReset() {
 	$("#welcome-overlay").show();
 	$("#quiz").show();
