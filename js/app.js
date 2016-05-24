@@ -1,7 +1,6 @@
-
-$(document).ready(function (){
+$(document).ready(function(){
 "use strict";
-var score = 0;
+var score = [];
 var currentQuestion = 0;
 var allQuestions = [{
 	question: "If you ever plan to run with his team, which of the follow artists finds it important to practice good hygeine?" ,
@@ -32,38 +31,39 @@ var allQuestions = [{
 
 
 /*-----Start Screen & Animations------*/
-$("#start-button").click(function  () {
-	$('#car-image').show();
-	$('#car-image').animate(
+$("#start-button").click(function  () {	
+	$('#car-image').show().animate(
   	{'left': '-800px'}, 10000,
-  	function() {
-  		$(this).hide();
-  		$(this).css('left', '750px');
-  	}
-    );
-	$('#bunny-image').show();
-	$('#bunny-image').animate(
+  		function() {
+  		$(this).hide().css('left', '750px');
+});	
+	$('#bunny-image').show().animate(
   	{'left': '-800px'}, 10000,
-  	function() {
-    		$(this).hide();
-    		$(this).css('left', '775px'); 
-    		$('#welcome-overlay').fadeOut(100);
-    	gamePlay();
-    })
+  		function() {
+   		$(this).hide().css('left', '775px');
+    	$('#welcome-overlay').fadeOut(100);
+})
+
+score = 0;
+currentQuestion = 0;
+generateQuestion();
 
 });
- 	
-function gamePlay(){
-		generateQuestion();
-	$('.answer-list').on('click', 'li', userSelection)
-	$('#submit-button').click(function(){
-		checkAnswer();
-	})
-	$('#continue-button').click(function(){
-   		addScore();
-		nextQuestion();
-	})
-}
+
+
+	
+$('#answer-list').on('click', 'li', userSelection);
+
+$('#submit-button').click(function(){
+	checkAnswer();
+});	
+
+$('#continue-button').click(function(){
+	currentQuestion++;
+   	addScore();
+	nextQuestion();
+});
+
 
 
 function userSelection() {
@@ -72,17 +72,17 @@ function userSelection() {
 
 function generateQuestion() {
 	questionCounter();
-	clearQuizItem();
  		if (currentQuestion < allQuestions.length) {
      		$('.question-text').text(allQuestions[currentQuestion].question);
+     		$('#answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[0] + '</li>');
+     		$('#answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[1] + '</li>');
+     		$('#answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[2] + '</li>');
+     		$('#answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[3] + '</li>');
      	}
      	else {
 			showResults();
 		}
-     	for (var i = 0; i < allQuestions[currentQuestion].answers.length; i++) {
-        	$('.answer-list').append('<li class="list-answer-item">' + allQuestions[currentQuestion].answers[i] + '</li>');
-		}
-		
+
 	}
 
 
@@ -95,7 +95,7 @@ function questionCounter(){
 function checkAnswer() {
     if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
-		}
+	}
 	else if ($('.selectedAnswer').text() === allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("right-answer").removeClass("selectedAnswer");
     	$('#continue-button').show();
@@ -103,18 +103,17 @@ function checkAnswer() {
 	}
 
 function addScore(){
-	var score = 0;
+	var partialScore = 0;
 	var wrongAttempts = $('.wrong-answer').length;
-            wrongAttempts == 3 ? score = 1 : false;
-            wrongAttempts == 2 ? score = 2 : false;
-            wrongAttempts == 1 ? score = 3 : false;
-            wrongAttempts == 0 ? score = 4 : false;
-	$("#point-total").append('<li class="score-total">' + score + '</li>');	
+        wrongAttempts == 3 ? partialScore = 1 : false;
+        wrongAttempts == 2 ? partialScore = 2 : false;
+        wrongAttempts == 1 ? partialScore = 3 : false;
+        wrongAttempts == 0 ? partialScore = 4 : false;
+	$("#point-total").append('<li class="score-total">' + partialScore + '</li>');
 }
 
 function nextQuestion () {
 	clearQuizItem();
-	currentQuestion++;
 	generateQuestion();
 }
 
@@ -130,34 +129,29 @@ function showResults() {
 	$("#results").show();
 	$("#quiz").hide();
 	computeFinalScore ();
-	$('#new-game').click(newGame);
+	$('#new-game').click(gameReset);
 	}
 
 
 function computeFinalScore() {	
-    var sum = 0;
-    $('li.score-total').each(function(){
-    sum += parseInt(this.innerHTML, 10)
-    })
-    $('#results-input').text(sum);
-    	if (sum >= 11) {
-    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
-    	}
-    	else {
-    		$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');
-    	}	
-  
-	}
-
-function newGame(){
+var sum = 0;
+$('li.score-total').each(function(){
+sum += parseInt(this.innerHTML, 10)
+})
+$('#results-input').text(sum);
+if (sum >= 11) {
+$(".bootsie-or-ballin").append("<p class='placement'>" + "Ballin'!" + '</p>');
+}
+else {
+	$(".bootsie-or-ballin").append("<p class='placement'>" + "Bootsie" + '</p>');	
+  	}		  	
+  }
+function gameReset() {
 	$("#welcome-overlay").show();
 	$("#quiz").show();
+	$(".placement").empty();
 	$("#results").hide();
 	$("#results-input").empty();
-	$(".placement").empty();
-	$('#point-total').empty();                                           
-    score = 0;
-    currentQuestion = 0;
-    clearQuizItem();                                           
+	$('#point-total').empty();                                                                                  
 }
 });
