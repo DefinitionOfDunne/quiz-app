@@ -33,12 +33,12 @@ var allQuestions = [{
 /*-----Start Screen & Animations------*/
 $("#start-button").click(function  () {	
 	$('#car-image').show().animate(
-  	{'left': '-800px'}, 10000,
+  	{'left': '-800px'}, 1,
   		function() {
   		$(this).hide().css('left', '750px');
 });	
 	$('#bunny-image').show().animate(
-  	{'left': '-800px'}, 10000,
+  	{'left': '-800px'}, 1,
   		function() {
    		$(this).hide().css('left', '775px');
     	$('#welcome-overlay').fadeOut(100);
@@ -67,6 +67,7 @@ $('#continue-button').click(function(){
 
 
 function userSelection() {
+	$('#answer-list').off('click', 'li', userSelection);
 	$(this).removeClass("list-answer-item").addClass("selectedAnswer");
 }
 
@@ -93,6 +94,7 @@ function questionCounter(){
 	}
 
 function checkAnswer() {
+	$('#answer-list').on('click', 'li', userSelection);
     if ($('.selectedAnswer').text() != allQuestions[currentQuestion].correct) {
     	$('.selectedAnswer').addClass("wrong-answer").removeClass("selectedAnswer");
 	}
