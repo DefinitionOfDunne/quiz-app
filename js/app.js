@@ -50,12 +50,6 @@ generateQuestion();
 
 });
 
-score = 0;
-currentQuestion = 0;
-generateQuestion();
-
-});
-
 
 	
 $('#answer-list').on('click', 'li', userSelection);
@@ -69,7 +63,6 @@ $('#continue-button').click(function(){
    	addScore();
 	nextQuestion();
 });
-
 
 
 function userSelection() {
