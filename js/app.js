@@ -31,18 +31,24 @@ var allQuestions = [{
 
 
 /*-----Start Screen & Animations------*/
-$("#start-button").click(function  () {	
+$("#start-button").click(function () {	
 	$('#car-image').show().animate(
-  	{'left': '-800px'}, 1000,
+  	{'left': '-800px'}, 8000,
   		function() {
   		$(this).hide().css('left', '750px');
-	});	
+});	
 	$('#bunny-image').show().animate(
-  	{'left': '-800px'}, 1000,
+  	{'left': '-800px'}, 8000,
   		function() {
    		$(this).hide().css('left', '775px');
     	$('#welcome-overlay').fadeOut(100);
-	})
+})
+
+score = 0;
+currentQuestion = 0;
+generateQuestion();
+
+});
 
 score = 0;
 currentQuestion = 0;
