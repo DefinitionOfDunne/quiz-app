@@ -33,12 +33,12 @@ var allQuestions = [{
 /*-----Start Screen & Animations------*/
 $("#start-button").click(function  () {	
 	$('#car-image').show().animate(
-  	{'left': '-800px'}, 1,
+  	{'left': '-800px'}, 1000,
   		function() {
   		$(this).hide().css('left', '750px');
 	});	
 	$('#bunny-image').show().animate(
-  	{'left': '-800px'}, 1,
+  	{'left': '-800px'}, 1000,
   		function() {
    		$(this).hide().css('left', '775px');
     	$('#welcome-overlay').fadeOut(100);
