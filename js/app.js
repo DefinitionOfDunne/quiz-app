@@ -50,21 +50,19 @@ generateQuestion();
 
 });
 
-score = 0;
-currentQuestion = 0;
-generateQuestion();
 
-});
-
+	
 $('#answer-list').on('click', 'li', userSelection);
+
 $('#submit-button').click(function(){
 	checkAnswer();
-	});	
+});	
+
 $('#continue-button').click(function(){
 	currentQuestion++;
    	addScore();
 	nextQuestion();
-	});
+});
 
 function userSelection() {
 	$('#answer-list').off('click', 'li', userSelection);
