@@ -1,99 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Bay Area Rap Quiz</title>
-	<link rel="stylesheet" href="style/reset.css">
-	<link rel="stylesheet" href="style/style.css"/>
+    <meta charset="UTF-8">
+    <title>Bay Area Rap Quiz</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css" />
 </head>
 
 <body>
-<!-- Welcome Screen -->
-	<!--Welcome Title -->
-<section id="welcome-overlay">
-	<div class="intro-container">
-	<header id="top-header">
-		<h1>The Ultimate Bay Area Hip Hop Challenge</h1>
-		<h2> Time to find out if you're bootsie or ballin'! </h2>
-	</header>
-
-	<!--Instructions -->
-	<div id="instructions">
-	<h4>Instructions</h4>
-	<ul id="instruction-list">
-		<li>1. To begin, help The Ghost Ridin' Bunny Get Home!</li>
-		<li>2. Click An Answer and Then Click The Submit Button</li>
-		<li>3. Guess Until It's Right and Click Next To Continue</li>
-		<li>4. Four Points For Getting It Right On The First Try</li>
-		<li>5. Lose A Point For Each Wrong Guess</li>
-		<li>6. Get Your Final Score! </li>
-		</ul>
-		</div>
-
-	<button id="start-button">Get Crack-a-lackin'!</button>
-
-
-	
-	<!--Ghostriding Image -->
-	<div id="ghostride-zone-bottom">
-		<img id="car-image" src="images/whip.png">
-		<img id="bunny-image" src="images/walking.gif">
-	</div>
-	</div>
-
-</section>
-
-
-<!--Quiz Questions --> 
-<section id="quiz">
-	<div class="intro-container">
-		<header>
-			<h1>The Ultimate Bay Area Hip Hop Challenge</h1>
-			<h4>Question 
+    <!-- Welcome Screen -->
+    <!--Welcome Title -->
+    <section id="welcome-overlay">
+        <div class="page-container">
+            <header id="top-header">
+                <h1>The Ultimate Bay Area Hip Hop Challenge</h1>
+                <h2> Time to find out if you're bootsie or ballin'! </h2>
+            </header>
+            <!--Instructions -->
+            <div id="instructions">
+                <h4>Instructions</h4>
+                <ul id="instruction-list">
+                    <li>1. To begin, help The Ghost Ridin' Bunny Get Home!</li>
+                    <li>2. Click An Answer and Then Click The Submit Button</li>
+                    <li>3. Guess Until It's Right and Click Next To Continue</li>
+                    <li>4. Four Points For Getting It Right On The First Try</li>
+                    <li>5. Lose A Point For Each Wrong Guess</li>
+                    <li>6. Get Your Final Score! </li>
+                </ul>
+            </div>
+            <button id="start-button">Get Crack-a-lackin'!</button>
+            <!--Ghostriding Image -->
+            <div id="ghostride-zone-bottom">
+                <img id="car-image" src="images/whip.png">
+                <img id="bunny-image" src="images/walking.gif">
+            </div>
+        </div>
+    </section>
+    <!--Quiz Questions -->
+    <section id="quiz">
+        <div class="page-container">
+            <header>
+                <h1>The Ultimate Bay Area Hip Hop Challenge</h1>
+                <h4>Question 
 			<span id="current-question-title"> </span>
 			 of 
 			 <span id="question-total"> 5 </h4>
-		</header>
-
-	<div class="question-wrapper">
-		<h2 class="question-text"> Lorem ipsum dolor sit amet? </h2>
-		<ul id="answer-list">
-			
-		</ul>
-		</div>
-
-	<div id="quiz-tracker">
-	<h2>Point Tracker</h2>	
-		<ul id="point-total">
-			
-		</ul>
-	</div>
-	<button id="submit-button">Submit Answer</button>
-	<button id="continue-button"> Next! </button>
-	</div>
-	
-</section>
-
-
-
-<!--Results -->
-<section id="results">
-	<div class="intro-container">
-	<header>
-		<h1>Results</h1>
-		<h2>You got</h2> 
-		<p id="results-input"> </p>
-		<h2>points!</h2>
-	</header>
-	<div id="feedback">
-	<p class="bootsie-or-ballin"> </p>
-	</div> 
-	<button id="new-game">Click to Try Again!</button>
-	</div>
-	</section>
-<!-- JavaScript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+            </header>
+            <div class="question-wrapper">
+                <h2 class="question-text"> Lorem ipsum dolor sit amet? </h2>
+                <ul id="answer-list">
+                </ul>
+            </div>
+            <div id="quiz-tracker">
+                <h2>Point Tracker</h2>
+                <ul id="point-total">
+                </ul>
+            </div>
+            <button id="submit-button">Submit Answer</button>
+            <button id="continue-button"> Next! </button>
+        </div>
+    </section>
+    <!--Results -->
+    <section id="results">
+        <div class="page-container">
+            <header>
+                <h1>Results</h1>
+                <h2>You got</h2>
+                <p id="results-input"> </p>
+                <h2>points!</h2>
+            </header>
+            <div id="feedback">
+                <p class="bootsie-or-ballin"> </p>
+            </div>
+            <button id="new-game">Click to Try Again!</button>
+        </div>
+    </section>
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
